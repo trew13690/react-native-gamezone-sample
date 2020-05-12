@@ -28,8 +28,10 @@ const styles = StyleSheet.create({
     headerText:{
        fontWeight: 'bold',
        fontSize: 20,
+       textAlign: 'center',
        color: '#333',
        letterSpacing: 1,
+        marginLeft: 60,
     },
     icon: {
         position: 'absolute',
