@@ -16,8 +16,12 @@ export const globalStyles = StyleSheet.create({
         lineHeight: 20,
 
     },
-    modalContent:{
-
+    input:{
+       borderWidth: 1,
+        borderColor: '#ddd',
+        padding: 10,
+        fontSize: 18,
+        borderRadius: 6,
     }
 
 });
