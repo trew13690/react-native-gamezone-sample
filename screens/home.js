@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {StyleSheet, View, Text, FlatList, TouchableOpacity, Modal} from 'react-native'
+import {StyleSheet, View, Text, FlatList, TouchableOpacity, Modal, TouchableWithoutFeedback,Keyboard} from 'react-native'
 import {globalStyles} from "../styles/global";
 import ReviewDetails from "./reviewDetails";
 import Card from '../shared/card'
@@ -29,11 +29,21 @@ export default function Home({navigation}) {
         }
     ])
 
+
+    const addReview = (review) => {
+        review.key = Math.random().toString()
+        setReviews((currentReviews) => {
+            return [review, ...currentReviews]
+        })
+        setModal(false);
+    }
+
     return (
         <View style={globalStyles.container}>
 
 
             <Modal visible={modalOpen} animationType='slide'>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.modalContent}>
                     <MaterialIcons
                         name='close'
@@ -41,8 +51,9 @@ export default function Home({navigation}) {
                         style={{...styles.modalToggle,...styles.modalClose}}
                         onPress={() => setModal(false)}
                     />
-                    <ReviewForm/>
+                    <ReviewForm addReview={addReview}/>
                 </View>
+                </TouchableWithoutFeedback>
             </Modal>
 
             <Modal visible={false} animationType='slide'>
